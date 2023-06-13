@@ -1,20 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  #labels:
-  #  app: jenkins
-  name: jenkins
+  name: jenkins-deploy
   namespace: jenkins
 spec:
   replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: webapp
+      app: jenkins
   template:
     metadata:
       labels:
-        app: webapp
+        app: jenkins
     spec:
       containers:
       - image: docker.io/jenkins/jenkins:lts-jdk11
@@ -24,8 +22,8 @@ spec:
         - containerPort: 8080
           protocol: TCP
           name: jenkins-port
-        - containerPort: 22
-          name: ssh-port
+        # - containerPort: 22
+        #   name: ssh-port
         resources: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File

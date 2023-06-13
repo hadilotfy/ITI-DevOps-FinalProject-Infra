@@ -20,7 +20,7 @@ spec:
           ports:
           - containerPort: 22
             protocol: TCP
-            name: ssh-port
+            name: j-slave-ssh-port
         #   volumeMounts:
         #   - mountPath: /var/run/docker.sock                  # need chmod
         #     name: docker-sock
@@ -29,3 +29,6 @@ spec:
         #   - name: docker-sock
         #     hostPath:
         #       path: /var/run/docker.sock
+
+
+##  may need to add to user data : ascript to make docker.sock accessible through all nodes.

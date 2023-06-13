@@ -1,3 +1,17 @@
+# aws eks --region us-east-1 update-kubeconfig --name webapp-cluster --profile terraform
+Jenkins Node configuration:
+    kubectl apply -f deploy_ssh.yml
+    kubectl exec -n jenkins -it  <deploy_ssh_pod> -- bash
+    vi aws_key2.pem   # >>> add private key
+    chmod 400 aws_key2.pem
+    ssh -i aws_key2.pem ec2-user@<jenkins-node-IP>
+    lsblk
+    cs
+
+
+
+
+
 you need to execute these commands inside the slave :
     passwd jenkins   # and add your password for jenkins user
     service ssh start # to start ssh service

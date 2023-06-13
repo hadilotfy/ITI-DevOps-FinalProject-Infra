@@ -59,9 +59,27 @@ resource "aws_eks_node_group" "private-nodes" {
   ]
 }
 
+# resource "aws_security_group" "sg" {
+#     vpc_id = module.vpc.vpc_id
+#     ingress {
+#         from_port = 32080
+#         to_port = 32080
+#         protocol =  "tcp"
+#         cidr_blocks = ["0.0.0.0/0"]
+#     }
+#     egress {
+#         from_port = 0
+#         to_port = 0
+#         protocol = "-1"
+#         cidr_blocks = ["0.0.0.0/0"]
+#     }
+# }
+
 resource "aws_launch_template" "jenkins-disk" {
   name = "jenkins-disk"
   key_name = "aws_key2"
+  #vpc_security_group_ids = [aws_security_group.sg.id,]
+  #security_group_names = [aws_security_group.sg.name]
   block_device_mappings {
     device_name = "/dev/xvdb"
     ebs {
@@ -70,14 +88,28 @@ resource "aws_launch_template" "jenkins-disk" {
       delete_on_termination = false
     }
   }
+  
 }
 
-resource "aws_eks_node_group" "private-jenkins-node" {
+resource "aws_security_group_rule" "example" {
+      type              = "ingress"
+      from_port         = 0
+      to_port           = 65535
+      protocol          = "tcp"
+      cidr_blocks       = ["0.0.0.0/0"]
+    
+      security_group_id = aws_eks_cluster.webapp-cluster.vpc_config[0].cluster_security_group_id
+    }
+
+
+resource "aws_eks_node_group" "public-jenkins-node" {
   cluster_name    = aws_eks_cluster.webapp-cluster.name
-  node_group_name = "private-jenkins-node"
+  node_group_name = "public-jenkins-node"
   node_role_arn   = aws_iam_role.nodes.arn
 
-  subnet_ids = module.subnets.private_subnets_ids
+  #subnet_ids = module.subnets.private_subnets_ids
+  subnet_ids = module.subnets.public_subnets_ids
+  
   # ON_DEMAND   SPOT is cheeper
   capacity_type  = "ON_DEMAND"
   instance_types = ["t3.small"]
