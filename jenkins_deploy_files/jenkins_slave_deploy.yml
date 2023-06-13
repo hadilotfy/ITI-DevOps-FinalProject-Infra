@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-slave-deploy
+  namespace: jenkins
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins-ubuntu-slave
+  template:
+      metadata:
+        labels:
+          app: jenkins-ubuntu-slave
+      spec:
+        containers:
+        - name: jenkins-ubuntu-slave
+          image: hadilotfy/jenkins-ubuntu-slave:v0 
+          imagePullPolicy: Never
+          ports:
+          - containerPort: 22
+            protocol: TCP
+            name: ssh-port
+        #   volumeMounts:
+        #   - mountPath: /var/run/docker.sock                  # need chmod
+        #     name: docker-sock
+        # volumes:
+        
+        #   - name: docker-sock
+        #     hostPath:
+        #       path: /var/run/docker.sock

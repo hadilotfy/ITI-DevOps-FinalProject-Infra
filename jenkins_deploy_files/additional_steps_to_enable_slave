@@ -1,0 +1,8 @@
+you need to execute these commands inside the slave :
+    passwd jenkins   # and add your password for jenkins user
+    service ssh start # to start ssh service
+
+you may also need to make this file :  /var/jenkins_home/.ssh/known_hosts
+    mkdir /var/jenkins_home/.ssh
+    touch /var/jenkins_home/.ssh/known_hosts
+

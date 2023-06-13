@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ssh-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: website
+  template:
+    metadata:
+      labels:
+        app: website
+    spec:
+      containers:
+      - image: hadilotfy/jenkins-ubuntu-slave:v0
+        name: ssh-image
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 22
+          name: ssh-port
+

@@ -1,0 +1,603 @@
+
+Terraform will perform the following actions:
+
+  # aws_eks_cluster.webapp-cluster will be destroyed
+  - resource "aws_eks_cluster" "webapp-cluster" {
+      - arn                       = "arn:aws:eks:us-east-1:385582076770:cluster/webapp-cluster" -> null
+      - certificate_authority     = [
+          - {
+              - data = "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUMvakNDQWVhZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJek1EWXhNakl6TWpnMU5sb1hEVE16TURZd09USXpNamcxTmxvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBTGFHCjVxNFpDMkpIR1crWUQzSEdMYTR2NWlGR2ZKY25RY1VqVjNqL1hiM2RvcEdBYTJ0QklFaVNoaXZRSVE1TGNQVnUKTGUvSnVHYXBlZlkxQlpMdUhxcmk1MDJRVi90Mld0bWRKVnBOU1NxckMwZUF2TXJLNlJkY2l4T0YrZHZMclVvawoyYndhaFptT09nNVNhOVk0UFU0aFIwenk2VGhSWlo0c3pjR01jR2lXZUFLWU5RUXR1VXJacWJmWmxsQkNXV0tXCkpJUGplNTBpNzNpYUUzTTZzemQ1Vm4wUUE0NGFHemJhTHZPQWpRREdPb3pDcm9pUzNHa3B6M2ZSQnpqOUV5TG8KWGtuMDlTdXpkVC93eVdJZUFiMHZ3TEdwaWVYc292anhNM2o4aFlFWXUrdURvOWZ0NGZDaTh4bGxnSUZNcFpHNgpGVFVYVUQ0Z3BwTXpjUVFFRUNzQ0F3RUFBYU5aTUZjd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCCi93UUZNQU1CQWY4d0hRWURWUjBPQkJZRUZQbUZGVXZIN1d0cDVLSDJMejgvV0ZhdUJ3ak5NQlVHQTFVZEVRUU8KTUF5Q0NtdDFZbVZ5Ym1WMFpYTXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBRmN2Yi95R002dkRCb0g4eGtSUQoxZnYwTlNiZG4zaExCKytqTUF4TjNHdUgxSGdWT0p1a2VyWW5PM0RmZzNyRi90ZVg4MXY3aURKRU5XMFZlTnRNCkNNYmdobHliSWhVUGpYZUZIYUhITGJEdDhVU1c3WVVkNjVTZUxUdjhOb1hSUjdFNWg5WHZ1RGVkTSt0NFhtWWwKSUFSaGxNSzhHaHJrcWR1RUdwTHllNDhxVXJoR0hsa0M5SGIyVXFERy91MDdUb0MxZ0J5YXZURWNKUVFHbTA5agpPZ2tpTUZuMzN2WTBGb1J6UWl2ZkpvOHdCNEd6YWV1bG1tU2pGZE44cnY2eEVsU1RNQkxvOGxHWWhpbEpqY3R1Cnh2cEE2OG1qalc0eHZ3UkNIVVI2WHlQRDlMREdteXpqMFZ0MXBtaE1OaGZseXVTczlGUlNHeE13eFRnRVlmcGUKUmRFPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="
+            },
+        ] -> null
+      - created_at                = "2023-06-12 23:22:31.801 +0000 UTC" -> null
+      - enabled_cluster_log_types = [] -> null
+      - endpoint                  = "https://104874D1D03B75EDB9279E1329E3EAC9.gr7.us-east-1.eks.amazonaws.com" -> null
+      - id                        = "webapp-cluster" -> null
+      - identity                  = [
+          - {
+              - oidc = [
+                  - {
+                      - issuer = "https://oidc.eks.us-east-1.amazonaws.com/id/104874D1D03B75EDB9279E1329E3EAC9"
+                    },
+                ]
+            },
+        ] -> null
+      - name                      = "webapp-cluster" -> null
+      - platform_version          = "eks.2" -> null
+      - role_arn                  = "arn:aws:iam::385582076770:role/eks-cluster-role" -> null
+      - status                    = "ACTIVE" -> null
+      - tags                      = {} -> null
+      - tags_all                  = {} -> null
+      - version                   = "1.27" -> null
+
+      - kubernetes_network_config {
+          - ip_family         = "ipv4" -> null
+          - service_ipv4_cidr = "172.20.0.0/16" -> null
+        }
+
+      - vpc_config {
+          - cluster_security_group_id = "sg-01e3bf492b51c88d4" -> null
+          - endpoint_private_access   = false -> null
+          - endpoint_public_access    = true -> null
+          - public_access_cidrs       = [
+              - "0.0.0.0/0",
+            ] -> null
+          - security_group_ids        = [] -> null
+          - subnet_ids                = [
+              - "subnet-00432c105093e9048",
+              - "subnet-014e0a2d0d72e133a",
+              - "subnet-04415dd42bf59b39b",
+              - "subnet-0c2d1f14e69cda79c",
+            ] -> null
+          - vpc_id                    = "vpc-0a26ecd823f89e730" -> null
+        }
+    }
+
+  # aws_eks_node_group.private-nodes will be destroyed
+  - resource "aws_eks_node_group" "private-nodes" {
+      - ami_type        = "AL2_x86_64" -> null
+      - arn             = "arn:aws:eks:us-east-1:385582076770:nodegroup/webapp-cluster/private-nodes/2ec458f9-f7c2-e103-7454-f428244eba0c" -> null
+      - capacity_type   = "SPOT" -> null
+      - cluster_name    = "webapp-cluster" -> null
+      - disk_size       = 20 -> null
+      - id              = "webapp-cluster:private-nodes" -> null
+      - instance_types  = [
+          - "t3.small",
+        ] -> null
+      - labels          = {
+          - "role" = "general"
+        } -> null
+      - node_group_name = "private-nodes" -> null
+      - node_role_arn   = "arn:aws:iam::385582076770:role/eks-node-group-nodes" -> null
+      - release_version = "1.27.1-20230607" -> null
+      - resources       = [
+          - {
+              - autoscaling_groups              = [
+                  - {
+                      - name = "eks-private-nodes-2ec458f9-f7c2-e103-7454-f428244eba0c"
+                    },
+                ]
+              - remote_access_security_group_id = ""
+            },
+        ] -> null
+      - status          = "DEGRADED" -> null
+      - subnet_ids      = [
+          - "subnet-00432c105093e9048",
+          - "subnet-014e0a2d0d72e133a",
+        ] -> null
+      - tags            = {} -> null
+      - tags_all        = {} -> null
+      - version         = "1.27" -> null
+
+      - scaling_config {
+          - desired_size = 1 -> null
+          - max_size     = 5 -> null
+          - min_size     = 0 -> null
+        }
+
+      - update_config {
+          - max_unavailable            = 1 -> null
+          - max_unavailable_percentage = 0 -> null
+        }
+    }
+
+  # aws_iam_openid_connect_provider.eks will be destroyed
+  - resource "aws_iam_openid_connect_provider" "eks" {
+      - arn             = "arn:aws:iam::385582076770:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/104874D1D03B75EDB9279E1329E3EAC9" -> null
+      - client_id_list  = [
+          - "sts.amazonaws.com",
+        ] -> null
+      - id              = "arn:aws:iam::385582076770:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/104874D1D03B75EDB9279E1329E3EAC9" -> null
+      - tags            = {} -> null
+      - tags_all        = {} -> null
+      - thumbprint_list = [
+          - "9e99a48a9960b14926bb7f3b02e22da2b0ab7280",
+        ] -> null
+      - url             = "oidc.eks.us-east-1.amazonaws.com/id/104874D1D03B75EDB9279E1329E3EAC9" -> null
+    }
+
+  # aws_iam_policy.test-policy will be destroyed
+  - resource "aws_iam_policy" "test-policy" {
+      - arn       = "arn:aws:iam::385582076770:policy/test-policy" -> null
+      - id        = "arn:aws:iam::385582076770:policy/test-policy" -> null
+      - name      = "test-policy" -> null
+      - path      = "/" -> null
+      - policy    = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action   = [
+                          - "s3:ListAllMyBuckets",
+                          - "s3:GetBucketLocation",
+                        ]
+                      - Effect   = "Allow"
+                      - Resource = "arn:aws:s3:::*"
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - policy_id = "ANPAVTRT3SNRB4OYV4FPL" -> null
+      - tags      = {} -> null
+      - tags_all  = {} -> null
+    }
+
+  # aws_iam_role.culster_role will be destroyed
+  - resource "aws_iam_role" "culster_role" {
+      - arn                   = "arn:aws:iam::385582076770:role/eks-cluster-role" -> null
+      - assume_role_policy    = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "sts:AssumeRole"
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "eks.amazonaws.com"
+                        }
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - create_date           = "2023-06-12T23:22:14Z" -> null
+      - force_detach_policies = false -> null
+      - id                    = "eks-cluster-role" -> null
+      - managed_policy_arns   = [
+          - "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
+        ] -> null
+      - max_session_duration  = 3600 -> null
+      - name                  = "eks-cluster-role" -> null
+      - path                  = "/" -> null
+      - role_last_used        = [
+          - {
+              - last_used_date = "2023-06-13T00:34:41Z"
+              - region         = "us-east-1"
+            },
+        ] -> null
+      - tags                  = {} -> null
+      - tags_all              = {} -> null
+      - unique_id             = "AROAVTRT3SNRBBF7BZBET" -> null
+    }
+
+  # aws_iam_role.nodes will be destroyed
+  - resource "aws_iam_role" "nodes" {
+      - arn                   = "arn:aws:iam::385582076770:role/eks-node-group-nodes" -> null
+      - assume_role_policy    = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "sts:AssumeRole"
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "ec2.amazonaws.com"
+                        }
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - create_date           = "2023-06-12T23:22:14Z" -> null
+      - force_detach_policies = false -> null
+      - id                    = "eks-node-group-nodes" -> null
+      - managed_policy_arns   = [
+          - "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly",
+          - "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
+          - "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy",
+        ] -> null
+      - max_session_duration  = 3600 -> null
+      - name                  = "eks-node-group-nodes" -> null
+      - path                  = "/" -> null
+      - role_last_used        = [
+          - {
+              - last_used_date = "2023-06-13T00:23:45Z"
+              - region         = "us-east-1"
+            },
+        ] -> null
+      - tags                  = {} -> null
+      - tags_all              = {} -> null
+      - unique_id             = "AROAVTRT3SNRBZED3U2PN" -> null
+    }
+
+  # aws_iam_role.test_oidc will be destroyed
+  - resource "aws_iam_role" "test_oidc" {
+      - arn                   = "arn:aws:iam::385582076770:role/test-oidc" -> null
+      - assume_role_policy    = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "sts:AssumeRoleWithWebIdentity"
+                      - Condition = {
+                          - StringEquals = {
+                              - "oidc.eks.us-east-1.amazonaws.com/id/104874D1D03B75EDB9279E1329E3EAC9:sub" = "system:serviceaccount:default:aws-test"
+                            }
+                        }
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Federated = "arn:aws:iam::385582076770:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/104874D1D03B75EDB9279E1329E3EAC9"
+                        }
+                      - Sid       = ""
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - create_date           = "2023-06-12T23:32:16Z" -> null
+      - force_detach_policies = false -> null
+      - id                    = "test-oidc" -> null
+      - managed_policy_arns   = [
+          - "arn:aws:iam::385582076770:policy/test-policy",
+        ] -> null
+      - max_session_duration  = 3600 -> null
+      - name                  = "test-oidc" -> null
+      - path                  = "/" -> null
+      - role_last_used        = [
+          - {
+              - last_used_date = "2023-06-13T00:03:33Z"
+              - region         = "us-east-1"
+            },
+        ] -> null
+      - tags                  = {} -> null
+      - tags_all              = {} -> null
+      - unique_id             = "AROAVTRT3SNRJZ6DSN36K" -> null
+    }
+
+  # aws_iam_role_policy_attachment.cluster-AmazonEKSClusterPolicy will be destroyed
+  - resource "aws_iam_role_policy_attachment" "cluster-AmazonEKSClusterPolicy" {
+      - id         = "eks-cluster-role-20230612232215605500000001" -> null
+      - policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy" -> null
+      - role       = "eks-cluster-role" -> null
+    }
+
+  # aws_iam_role_policy_attachment.nodes-AmazonEC2ContainerRegistryReadOnly will be destroyed
+  - resource "aws_iam_role_policy_attachment" "nodes-AmazonEC2ContainerRegistryReadOnly" {
+      - id         = "eks-node-group-nodes-20230612232215876800000004" -> null
+      - policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly" -> null
+      - role       = "eks-node-group-nodes" -> null
+    }
+
+  # aws_iam_role_policy_attachment.nodes-AmazonEKSWorkerNodePolicy will be destroyed
+  - resource "aws_iam_role_policy_attachment" "nodes-AmazonEKSWorkerNodePolicy" {
+      - id         = "eks-node-group-nodes-20230612232215876600000002" -> null
+      - policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy" -> null
+      - role       = "eks-node-group-nodes" -> null
+    }
+
+  # aws_iam_role_policy_attachment.nodes-AmazonEKS_CNI_Policy will be destroyed
+  - resource "aws_iam_role_policy_attachment" "nodes-AmazonEKS_CNI_Policy" {
+      - id         = "eks-node-group-nodes-20230612232215876700000003" -> null
+      - policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy" -> null
+      - role       = "eks-node-group-nodes" -> null
+    }
+
+  # aws_iam_role_policy_attachment.test_attach will be destroyed
+  - resource "aws_iam_role_policy_attachment" "test_attach" {
+      - id         = "test-oidc-20230612233217183800000007" -> null
+      - policy_arn = "arn:aws:iam::385582076770:policy/test-policy" -> null
+      - role       = "test-oidc" -> null
+    }
+
+  # module.subnets.aws_eip.eip will be destroyed
+  - resource "aws_eip" "eip" {
+      - allocation_id        = "eipalloc-0984e35ee31dd3b63" -> null
+      - association_id       = "eipassoc-0522dd354858111dc" -> null
+      - domain               = "vpc" -> null
+      - id                   = "eipalloc-0984e35ee31dd3b63" -> null
+      - network_border_group = "us-east-1" -> null
+      - network_interface    = "eni-06fac01aa1f310875" -> null
+      - private_dns          = "ip-10-0-1-117.ec2.internal" -> null
+      - private_ip           = "10.0.1.117" -> null
+      - public_dns           = "ec2-3-82-134-143.compute-1.amazonaws.com" -> null
+      - public_ip            = "3.82.134.143" -> null
+      - public_ipv4_pool     = "amazon" -> null
+      - tags                 = {
+          - "Name" = "WebApp-EIP"
+        } -> null
+      - tags_all             = {
+          - "Name" = "WebApp-EIP"
+        } -> null
+      - vpc                  = true -> null
+    }
+
+  # module.subnets.aws_nat_gateway.ngw will be destroyed
+  - resource "aws_nat_gateway" "ngw" {
+      - allocation_id        = "eipalloc-0984e35ee31dd3b63" -> null
+      - association_id       = "eipassoc-0522dd354858111dc" -> null
+      - connectivity_type    = "public" -> null
+      - id                   = "nat-09b66be1b4ca13da5" -> null
+      - network_interface_id = "eni-06fac01aa1f310875" -> null
+      - private_ip           = "10.0.1.117" -> null
+      - public_ip            = "3.82.134.143" -> null
+      - subnet_id            = "subnet-04415dd42bf59b39b" -> null
+      - tags                 = {
+          - "Name" = "WebApp-NGW"
+        } -> null
+      - tags_all             = {
+          - "Name" = "WebApp-NGW"
+        } -> null
+    }
+
+  # module.subnets.aws_route_table.private_rt will be destroyed
+  - resource "aws_route_table" "private_rt" {
+      - arn              = "arn:aws:ec2:us-east-1:385582076770:route-table/rtb-084e2f5c88e1e48c4" -> null
+      - id               = "rtb-084e2f5c88e1e48c4" -> null
+      - owner_id         = "385582076770" -> null
+      - propagating_vgws = [] -> null
+      - route            = [
+          - {
+              - carrier_gateway_id         = ""
+              - cidr_block                 = "0.0.0.0/0"
+              - core_network_arn           = ""
+              - destination_prefix_list_id = ""
+              - egress_only_gateway_id     = ""
+              - gateway_id                 = ""
+              - instance_id                = ""
+              - ipv6_cidr_block            = ""
+              - local_gateway_id           = ""
+              - nat_gateway_id             = "nat-09b66be1b4ca13da5"
+              - network_interface_id       = ""
+              - transit_gateway_id         = ""
+              - vpc_endpoint_id            = ""
+              - vpc_peering_connection_id  = ""
+            },
+        ] -> null
+      - tags             = {
+          - "Name" = "WebApp-Private-RT"
+        } -> null
+      - tags_all         = {
+          - "Name" = "WebApp-Private-RT"
+        } -> null
+      - vpc_id           = "vpc-0a26ecd823f89e730" -> null
+    }
+
+  # module.subnets.aws_route_table.public_rt will be destroyed
+  - resource "aws_route_table" "public_rt" {
+      - arn              = "arn:aws:ec2:us-east-1:385582076770:route-table/rtb-0ff41be4fae30dbb6" -> null
+      - id               = "rtb-0ff41be4fae30dbb6" -> null
+      - owner_id         = "385582076770" -> null
+      - propagating_vgws = [] -> null
+      - route            = [
+          - {
+              - carrier_gateway_id         = ""
+              - cidr_block                 = "0.0.0.0/0"
+              - core_network_arn           = ""
+              - destination_prefix_list_id = ""
+              - egress_only_gateway_id     = ""
+              - gateway_id                 = "igw-0a081b5fa4ae228e7"
+              - instance_id                = ""
+              - ipv6_cidr_block            = ""
+              - local_gateway_id           = ""
+              - nat_gateway_id             = ""
+              - network_interface_id       = ""
+              - transit_gateway_id         = ""
+              - vpc_endpoint_id            = ""
+              - vpc_peering_connection_id  = ""
+            },
+        ] -> null
+      - tags             = {
+          - "Name" = "WebApp-Public-RT"
+        } -> null
+      - tags_all         = {
+          - "Name" = "WebApp-Public-RT"
+        } -> null
+      - vpc_id           = "vpc-0a26ecd823f89e730" -> null
+    }
+
+  # module.subnets.aws_route_table_association.private_rtas[0] will be destroyed
+  - resource "aws_route_table_association" "private_rtas" {
+      - id             = "rtbassoc-0dc682dc06e19935f" -> null
+      - route_table_id = "rtb-084e2f5c88e1e48c4" -> null
+      - subnet_id      = "subnet-014e0a2d0d72e133a" -> null
+    }
+
+  # module.subnets.aws_route_table_association.private_rtas[1] will be destroyed
+  - resource "aws_route_table_association" "private_rtas" {
+      - id             = "rtbassoc-0f1bce04963f1b8d0" -> null
+      - route_table_id = "rtb-084e2f5c88e1e48c4" -> null
+      - subnet_id      = "subnet-00432c105093e9048" -> null
+    }
+
+  # module.subnets.aws_route_table_association.public_rtas[0] will be destroyed
+  - resource "aws_route_table_association" "public_rtas" {
+      - id             = "rtbassoc-0cf3177eb46b26e94" -> null
+      - route_table_id = "rtb-0ff41be4fae30dbb6" -> null
+      - subnet_id      = "subnet-04415dd42bf59b39b" -> null
+    }
+
+  # module.subnets.aws_route_table_association.public_rtas[1] will be destroyed
+  - resource "aws_route_table_association" "public_rtas" {
+      - id             = "rtbassoc-04330a05f2680353f" -> null
+      - route_table_id = "rtb-0ff41be4fae30dbb6" -> null
+      - subnet_id      = "subnet-0c2d1f14e69cda79c" -> null
+    }
+
+  # module.subnets.aws_subnet.private_subnets[0] will be destroyed
+  - resource "aws_subnet" "private_subnets" {
+      - arn                                            = "arn:aws:ec2:us-east-1:385582076770:subnet/subnet-014e0a2d0d72e133a" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "us-east-1a" -> null
+      - availability_zone_id                           = "use1-az4" -> null
+      - cidr_block                                     = "10.0.3.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-014e0a2d0d72e133a" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = false -> null
+      - owner_id                                       = "385582076770" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - tags                                           = {
+          - "Name"                                 = "private-subnet-0"
+          - "kubernetes.io/cluster/webapp-cluster" = "owned"
+          - "kubernetes.io/role/internal-elb"      = "1"
+        } -> null
+      - tags_all                                       = {
+          - "Name"                                 = "private-subnet-0"
+          - "kubernetes.io/cluster/webapp-cluster" = "owned"
+          - "kubernetes.io/role/internal-elb"      = "1"
+        } -> null
+      - vpc_id                                         = "vpc-0a26ecd823f89e730" -> null
+    }
+
+  # module.subnets.aws_subnet.private_subnets[1] will be destroyed
+  - resource "aws_subnet" "private_subnets" {
+      - arn                                            = "arn:aws:ec2:us-east-1:385582076770:subnet/subnet-00432c105093e9048" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "us-east-1b" -> null
+      - availability_zone_id                           = "use1-az6" -> null
+      - cidr_block                                     = "10.0.4.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-00432c105093e9048" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = false -> null
+      - owner_id                                       = "385582076770" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - tags                                           = {
+          - "Name"                                 = "private-subnet-1"
+          - "kubernetes.io/cluster/webapp-cluster" = "owned"
+          - "kubernetes.io/role/internal-elb"      = "1"
+        } -> null
+      - tags_all                                       = {
+          - "Name"                                 = "private-subnet-1"
+          - "kubernetes.io/cluster/webapp-cluster" = "owned"
+          - "kubernetes.io/role/internal-elb"      = "1"
+        } -> null
+      - vpc_id                                         = "vpc-0a26ecd823f89e730" -> null
+    }
+
+  # module.subnets.aws_subnet.public_subnets[0] will be destroyed
+  - resource "aws_subnet" "public_subnets" {
+      - arn                                            = "arn:aws:ec2:us-east-1:385582076770:subnet/subnet-04415dd42bf59b39b" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "us-east-1a" -> null
+      - availability_zone_id                           = "use1-az4" -> null
+      - cidr_block                                     = "10.0.1.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-04415dd42bf59b39b" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = true -> null
+      - owner_id                                       = "385582076770" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - tags                                           = {
+          - "Name"                                 = "public-subnet-0"
+          - "kubernetes.io/cluster/webapp-cluster" = "owned"
+          - "kubernetes.io/role/elb"               = "1"
+        } -> null
+      - tags_all                                       = {
+          - "Name"                                 = "public-subnet-0"
+          - "kubernetes.io/cluster/webapp-cluster" = "owned"
+          - "kubernetes.io/role/elb"               = "1"
+        } -> null
+      - vpc_id                                         = "vpc-0a26ecd823f89e730" -> null
+    }
+
+  # module.subnets.aws_subnet.public_subnets[1] will be destroyed
+  - resource "aws_subnet" "public_subnets" {
+      - arn                                            = "arn:aws:ec2:us-east-1:385582076770:subnet/subnet-0c2d1f14e69cda79c" -> null
+      - assign_ipv6_address_on_creation                = false -> null
+      - availability_zone                              = "us-east-1b" -> null
+      - availability_zone_id                           = "use1-az6" -> null
+      - cidr_block                                     = "10.0.2.0/24" -> null
+      - enable_dns64                                   = false -> null
+      - enable_lni_at_device_index                     = 0 -> null
+      - enable_resource_name_dns_a_record_on_launch    = false -> null
+      - enable_resource_name_dns_aaaa_record_on_launch = false -> null
+      - id                                             = "subnet-0c2d1f14e69cda79c" -> null
+      - ipv6_native                                    = false -> null
+      - map_customer_owned_ip_on_launch                = false -> null
+      - map_public_ip_on_launch                        = true -> null
+      - owner_id                                       = "385582076770" -> null
+      - private_dns_hostname_type_on_launch            = "ip-name" -> null
+      - tags                                           = {
+          - "Name"                                 = "public-subnet-1"
+          - "kubernetes.io/cluster/webapp-cluster" = "owned"
+          - "kubernetes.io/role/elb"               = "1"
+        } -> null
+      - tags_all                                       = {
+          - "Name"                                 = "public-subnet-1"
+          - "kubernetes.io/cluster/webapp-cluster" = "owned"
+          - "kubernetes.io/role/elb"               = "1"
+        } -> null
+      - vpc_id                                         = "vpc-0a26ecd823f89e730" -> null
+    }
+
+  # module.vpc.aws_internet_gateway.igw will be destroyed
+  - resource "aws_internet_gateway" "igw" {
+      - arn      = "arn:aws:ec2:us-east-1:385582076770:internet-gateway/igw-0a081b5fa4ae228e7" -> null
+      - id       = "igw-0a081b5fa4ae228e7" -> null
+      - owner_id = "385582076770" -> null
+      - tags     = {
+          - "Name" = "igw"
+        } -> null
+      - tags_all = {
+          - "Name" = "igw"
+        } -> null
+      - vpc_id   = "vpc-0a26ecd823f89e730" -> null
+    }
+
+  # module.vpc.aws_vpc.vpc will be destroyed
+  - resource "aws_vpc" "vpc" {
+      - arn                                  = "arn:aws:ec2:us-east-1:385582076770:vpc/vpc-0a26ecd823f89e730" -> null
+      - assign_generated_ipv6_cidr_block     = false -> null
+      - cidr_block                           = "10.0.0.0/16" -> null
+      - default_network_acl_id               = "acl-0a20e2d301a60aa15" -> null
+      - default_route_table_id               = "rtb-05a53f065a4f127a0" -> null
+      - default_security_group_id            = "sg-0a382e6516b7c6ed6" -> null
+      - dhcp_options_id                      = "dopt-0763b10d0c2bb791f" -> null
+      - enable_classiclink                   = false -> null
+      - enable_classiclink_dns_support       = false -> null
+      - enable_dns_hostnames                 = false -> null
+      - enable_dns_support                   = true -> null
+      - enable_network_address_usage_metrics = false -> null
+      - id                                   = "vpc-0a26ecd823f89e730" -> null
+      - instance_tenancy                     = "default" -> null
+      - ipv6_netmask_length                  = 0 -> null
+      - main_route_table_id                  = "rtb-05a53f065a4f127a0" -> null
+      - owner_id                             = "385582076770" -> null
+      - tags                                 = {
+          - "Name" = "webapp-vpc"
+        } -> null
+      - tags_all                             = {
+          - "Name" = "webapp-vpc"
+        } -> null
+    }
+
+Plan: 0 to add, 0 to change, 26 to destroy.
+
+Changes to Outputs:
+  - test_policy_arn = "arn:aws:iam::385582076770:role/test-oidc" -> null
+
+Do you really want to destroy all resources in workspace "dev"?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  Enter a value: yes^[[B^[[A

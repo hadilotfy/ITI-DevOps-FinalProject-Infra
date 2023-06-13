@@ -7,12 +7,12 @@ resource "aws_subnet" "public_subnets"{
     # ture if use: public k8s instance groups
     map_public_ip_on_launch = var.public_subnet_mapPubIps
     tags = {
-      "Name" = ""
+      "Name" = "public-subnet-${count.index}"
       # to be used for private lb creation
       "kubernetes.io/role/elb" = "1"
       # owned : if  used by cluster only, 
       # shared: if used by other resources
-      "kubernetes.io/cluster/app-k8s-cluster" = "owned"      #<<<<<<<<<<<<  app-k8s-cluster is the cluster name?????????????????????????
+      "kubernetes.io/cluster/webapp-cluster" = "owned"      #<<<<<<<<<<<<  app-k8s-cluster is the cluster name?????????????????????????
     }
 }
 
@@ -23,12 +23,12 @@ resource "aws_subnet" "private_subnets"{
     cidr_block = var.private_subnets_cidrs[count.index]
     availability_zone = data.aws_availability_zones.azones.names[count.index % local.num_of_zones]
     tags = {
-      "Name" = "private-subnet-${count.index}}"
+      "Name" = "private-subnet-${count.index}"
       # to be used for private lb creation
       "kubernetes.io/role/internal-elb" = "1"
       # owned : if  used by cluster only, 
       # shared: if used by other resources
-      "kubernetes.io/cluster/app-k8s-cluster" = "owned"      #<<<<<<<<<<<<  app-k8s-cluster is the cluster name????????????????????? 
+      "kubernetes.io/cluster/webapp-cluster" = "owned"      #<<<<<<<<<<<<  app-k8s-cluster is the cluster name????????????????????? 
     }
 }
 
@@ -55,7 +55,7 @@ resource "aws_route_table" "public_rt" {
         gateway_id = var.vpc_igw_id
     }
     tags = {
-      "Name" = "WebApp-Private-RT"
+      "Name" = "WebApp-Public-RT"
     }
 }
 # Private Routing Table
@@ -66,7 +66,7 @@ resource "aws_route_table" "private_rt" {
         gateway_id = aws_nat_gateway.ngw.id
     }
     tags = {
-      "Name" = "WebApp-Public-RT"
+      "Name" = "WebApp-Private-RT"
     }
 }
 
