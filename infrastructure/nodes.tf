@@ -28,52 +28,36 @@ resource "aws_iam_role_policy_attachment" "nodes-AmazonEC2ContainerRegistryReadO
   role       = aws_iam_role.nodes.name
 }
 
-resource "aws_eks_node_group" "private-nodes" {
-  cluster_name    = aws_eks_cluster.webapp-cluster.name
-  node_group_name = "private-nodes"
-  node_role_arn   = aws_iam_role.nodes.arn
+# resource "aws_launch_template" "worker-nodes-t" {
+#   name = "worker-nodes-t"
+#   key_name = "aws_key2"
+#   user_data = filebase64("userdata.sh") #"IyEvYmluL2Jhc2gKdG91Y2ggJ34vbXlmaWxlLnR4dCcK"
+# }
 
+resource "aws_eks_node_group" "worker-nodes" {
+  cluster_name    = aws_eks_cluster.webapp-cluster.name
+  node_group_name = "worker-nodes"
+  node_role_arn   = aws_iam_role.nodes.arn
   subnet_ids = module.subnets.private_subnets_ids
   # ON_DEMAND   SPOT is cheeper
   capacity_type  = "SPOT"
-  instance_types = ["t3.small"]
-
+  instance_types = ["t3.small"] 
+  ami_type = "AL2_x86_64"  
   scaling_config {
     desired_size = 1
     max_size     = 5
     min_size     = 0
   }
-
-  update_config {
-    max_unavailable = 1
-  }
-
+  
   labels = {
     role = "general"
   }
-
   depends_on = [
     aws_iam_role_policy_attachment.nodes-AmazonEKSWorkerNodePolicy,
     aws_iam_role_policy_attachment.nodes-AmazonEKS_CNI_Policy,
     aws_iam_role_policy_attachment.nodes-AmazonEC2ContainerRegistryReadOnly,
   ]
 }
-
-# resource "aws_security_group" "sg" {
-#     vpc_id = module.vpc.vpc_id
-#     ingress {
-#         from_port = 32080
-#         to_port = 32080
-#         protocol =  "tcp"
-#         cidr_blocks = ["0.0.0.0/0"]
-#     }
-#     egress {
-#         from_port = 0
-#         to_port = 0
-#         protocol = "-1"
-#         cidr_blocks = ["0.0.0.0/0"]
-#     }
-# }
 
 resource "aws_launch_template" "jenkins-disk" {
   name = "jenkins-disk"
@@ -87,13 +71,12 @@ resource "aws_launch_template" "jenkins-disk" {
       volume_type = "gp2"
       delete_on_termination = false
     }
-  }
-  
+  } 
 }
 
 resource "aws_security_group_rule" "example" {
       type              = "ingress"
-      from_port         = 0
+      from_port         = 32080
       to_port           = 65535
       protocol          = "tcp"
       cidr_blocks       = ["0.0.0.0/0"]
@@ -186,4 +169,23 @@ resource "aws_eks_node_group" "public-jenkins-node" {
 
 # data "aws_availability_zones" "azones" {
 #     state = "available"
+# }
+
+
+# data "aws_ami" "rhel" {
+#     name_regex = "^RHEL-9.2.0_HVM-[0-9]*-x86_64"
+# }
+
+# output "image_used" {
+#   value = { 
+#     image_type = aws_eks_node_group.private-nodes.ami_type
+#   }
+
+# }
+# output "clusterv" {
+#   value = { 
+#     cluserv = aws_eks_cluster.webapp-cluster.version,
+#     nodev = aws_eks_node_group.private-nodes.version
+#   }
+
 # }
