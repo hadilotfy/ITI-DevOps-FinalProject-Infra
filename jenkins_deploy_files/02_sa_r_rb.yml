@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: jenkins-account
+  namespace: jenkins
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: weboo-admin
+  namespace: weboo
+rules:
+- apiGroups: ['*']
+  resources: ['*']
+  verbs: ['*']
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: weboo-admin-bind
+  namespace: weboo
+subjects:
+- kind: ServiceAccount
+  name: jenkins-account
+  namespace: jenkins
+  apiGroup: ""
+roleRef:
+  kind: Role
+  name: weboo-admin
+  apiGroup: ""

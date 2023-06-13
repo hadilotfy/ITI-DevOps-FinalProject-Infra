@@ -13,6 +13,7 @@ spec:
         labels:
           app: jenkins-ubuntu-slave
       spec:
+        serviceAccountName: jenkins-account
         containers:
         - name: jenkins-ubuntu-slave
           image: docker.io/hadilotfy/jenkins-ubuntu-slave:v0 
@@ -39,3 +40,9 @@ spec:
                   - jenkins
 
 ##  may need to add to user data : ascript to make docker.sock accessible through all nodes.
+# 
+# need to add to image:
+#    1- default password for user jenkins
+#    2- start ssh
+#    3- chmod 777 /var/jenkins_home
+#

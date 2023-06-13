@@ -45,13 +45,10 @@ spec:
                 values:
                 - jenkins
 
-      
       volumes:
       - name: data-disk
         persistentVolumeClaim:
           claimName: claim-jenkins
-      
-
 ---
 kind: PersistentVolume
 apiVersion: v1
