@@ -76,8 +76,8 @@ resource "aws_launch_template" "jenkins-disk" {
 
 resource "aws_security_group_rule" "example" {
       type              = "ingress"
-      from_port         = 32080
-      to_port           = 65535
+      from_port         = 0 #32080
+      to_port           = 65535 #32080
       protocol          = "tcp"
       cidr_blocks       = ["0.0.0.0/0"]
     

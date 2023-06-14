@@ -20,8 +20,11 @@ resource "aws_iam_role_policy_attachment" "cluster-AmazonEKSClusterPolicy" {
 resource "aws_eks_cluster" "webapp-cluster" {
   name     = "webapp-cluster"
   role_arn = aws_iam_role.culster_role.arn
+  
   vpc_config {
     subnet_ids = concat(module.subnets.public_subnets_ids,module.subnets.private_subnets_ids)
+    endpoint_public_access = false
+    endpoint_private_access = true
   }
   depends_on = [aws_iam_role_policy_attachment.cluster-AmazonEKSClusterPolicy]
 }
