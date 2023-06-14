@@ -16,8 +16,8 @@ spec:
         serviceAccountName: jenkins-account
         containers:
         - name: jenkins-ubuntu-slave
-          image: docker.io/hadilotfy/jenkins-ubuntu-slave:v0 
-          imagePullPolicy: Never
+          image: docker.io/hadilotfy/jenkins-ubuntu-slave:v1 
+          imagePullPolicy: IfNotPresent
           ports:
           - containerPort: 22
             protocol: TCP
@@ -34,26 +34,8 @@ spec:
             requiredDuringSchedulingIgnoredDuringExecution:
               nodeSelectorTerms:
               - matchExpressions:
-                - key: role
+                - key: docker
                   operator: In
                   values:
-                  - jenkins
+                  - installed
 
-##  may need to add to user data : ascript to make docker.sock accessible through all nodes.
-# 
-# need to add to image:
-#    1- default password for user jenkins
-#    2- start ssh
-#    3- chmod 777 /var/jenkins_home
-#    4- install aws cli  
-#       curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-#       apt-get update
-#       apt-get install unzip
-#       unzip awscliv2.zip
-#       ./aws/install
-#    5- su - jenkins ; aws configure    # after loging-in as jenkins  #  need aws access key ID   and    aws secret access key
-#         aws_access_key_id = *****************
-#         aws_secret_access_key = *******************************
-#    6-create ~/.kube/config
-#         aws eks --region us-east-1 update-kubeconfig --name webapp-cluster --profile default
-#    

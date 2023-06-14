@@ -4,15 +4,28 @@ metadata:
   name: jenkins-account
   namespace: jenkins
 ---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: sa1-token
+  namespace: jenkins
+  annotations:
+    kubernetes.io/service-account.name: jenkins-account
+type: kubernetes.io/service-account-token
+---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: weboo-admin
   namespace: weboo
 rules:
-- apiGroups: ['*']
-  resources: ['*']
-  verbs: ['*']
+- apiGroups: ["apps"]
+  resources: ["deployments"]
+  verbs: ["*"]
+- apiGroups: [""]
+  resources: ["services"]
+  verbs: ["*"]
+
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -23,8 +36,8 @@ subjects:
 - kind: ServiceAccount
   name: jenkins-account
   namespace: jenkins
-  apiGroup: ""
+#  apiGroup: ""
 roleRef:
   kind: Role
   name: weboo-admin
-  apiGroup: ""
+  apiGroup: rbac.authorization.k8s.io

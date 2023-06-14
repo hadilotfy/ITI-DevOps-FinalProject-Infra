@@ -28,11 +28,17 @@ resource "aws_iam_role_policy_attachment" "nodes-AmazonEC2ContainerRegistryReadO
   role       = aws_iam_role.nodes.name
 }
 
-# resource "aws_launch_template" "worker-nodes-t" {
-#   name = "worker-nodes-t"
-#   key_name = "aws_key2"
-#   user_data = filebase64("userdata.sh") #"IyEvYmluL2Jhc2gKdG91Y2ggJ34vbXlmaWxlLnR4dCcK"
-# }
+resource "aws_launch_template" "worker-nodes-t" {
+  name = "worker-nodes-t"
+  key_name = "aws_key2"
+  user_data = filebase64("${path.module}/worker_node_intit.sh")
+  # tag_specifications {
+  #   resource_type = "instance"
+  #   tags = {
+  #     docker = "installed"
+  #   }
+  # }
+}
 
 resource "aws_eks_node_group" "worker-nodes" {
   cluster_name    = aws_eks_cluster.webapp-cluster.name
@@ -48,9 +54,14 @@ resource "aws_eks_node_group" "worker-nodes" {
     max_size     = 5
     min_size     = 0
   }
+  launch_template {
+    id = aws_launch_template.worker-nodes-t.id
+    version = aws_launch_template.worker-nodes-t.latest_version
+  }
   
   labels = {
     role = "general"
+    docker = "installed"
   }
   depends_on = [
     aws_iam_role_policy_attachment.nodes-AmazonEKSWorkerNodePolicy,
@@ -76,11 +87,11 @@ resource "aws_launch_template" "jenkins-disk" {
 
 resource "aws_security_group_rule" "example" {
       type              = "ingress"
-      from_port         = 0 #32080
-      to_port           = 65535 #32080
+      from_port         = 32080 #32080
+      to_port           = 32080 #32080
       protocol          = "tcp"
       cidr_blocks       = ["0.0.0.0/0"]
-    
+      
       security_group_id = aws_eks_cluster.webapp-cluster.vpc_config[0].cluster_security_group_id
     }
 

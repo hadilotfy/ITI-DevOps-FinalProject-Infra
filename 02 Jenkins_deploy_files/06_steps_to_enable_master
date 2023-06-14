@@ -10,4 +10,22 @@ Jenkins Node configuration:
     sudo mkfs.ext4 /dev/nvme1n1p1
 
 
+Preparing KUBECONFIG file for Jenkins
+    prerequest: 
+        kubectl apply -f 01_namespaces.yml -f 02_sa_r_rb.yml
+    $ kubectl -n jenkins describe sa jenkins-account   # get <token name>  from 'Tokens:'
+    $ kubectl describe secret <token name>             # get <token value> from 'token: '
+    get server <cluster endpoint> and <cluster certification authority> from terraform output
+    replace in kubeconfig_blueprint the three values
+        - token value
+        - cluster endpoint
+        - cluster certification authority
+    upload kubeconfig file to jenkins to use in pipeline
+    
+
+
+
+
+
+
 # aws eks --region us-east-1 update-kubeconfig --name webapp-cluster --profile terraform

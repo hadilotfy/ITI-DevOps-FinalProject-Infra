@@ -23,7 +23,7 @@ resource "aws_eks_cluster" "webapp-cluster" {
   
   vpc_config {
     subnet_ids = concat(module.subnets.public_subnets_ids,module.subnets.private_subnets_ids)
-    endpoint_public_access = false
+    endpoint_public_access =  false #(false ---> to make cluster private)
     endpoint_private_access = true
   }
   depends_on = [aws_iam_role_policy_attachment.cluster-AmazonEKSClusterPolicy]
